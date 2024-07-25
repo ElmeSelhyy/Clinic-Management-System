@@ -4,6 +4,11 @@
 #include "SCHEDULE.h"
 #include <Logger.h>
 
+Doctor::Doctor(const std::string &username, const std::string &password, const std::string &name, const int &age,std::string departmentname): User(username, password, name, age)
+{
+    this->departmentname=departmentname;
+}
+
 // Set the schedule for the doctor
 void Doctor::SetSchedule(timeSlot &timeslot)
 {

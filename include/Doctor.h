@@ -13,6 +13,7 @@ private:
     std::string status;
 
 public:
+    Doctor(const std::string &username, const std::string &password, const std::string &name, const int &age,std::string departmentname);
     void SetSchedule(timeSlot &slot);
     bool RemoveSchedule(Slot &slot);
     std::string getDepartmentName();
