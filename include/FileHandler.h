@@ -6,18 +6,11 @@ class FileHandler
 {
 private:
     std::string filename;
-    static FileHandler *instance;
-    FileHandler(const std::string &filename);
 
 public:
-    static FileHandler &getInstance(const std::string &filename);
-
+    FileHandler(const std::string &filename);
+    std::string readFile();
     bool writeFile(const std::string &record);
-    User &searchCredentials(const std::string &username, const std::string &password);
-
-    // delete copy constructor and assignment operator
-    FileHandler(FileHandler const &) = delete;
-    void operator=(FileHandler const &) = delete;
+    int searchCredentials(const std::string &username, const std::string &password);
+    bool RemoveCredentials(const &int userID);
 };
-
-FileHandler *FileHandler::instance = nullptr;

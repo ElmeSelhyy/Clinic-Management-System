@@ -10,12 +10,13 @@ private:
     std::string password;
     std::string name;
     int age;
+    int userType;
 
-    User(std::string userName, std::string password, std::string name, int age);
+    User(std::string userName, std::string password, std::string name, int age, int userType);
 
 public:
     bool Login(std::string userName, std::string password);
-    bool SignUp(std::string userName, std::string password, std::string name, int age);
+    bool SignUp(std::string userName, std::string password, std::string name, int age, int userType);
     bool ChangePassword(std::string newPassword);
     int getMyId();
     ~User();

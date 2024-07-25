@@ -8,15 +8,6 @@ FileHandler::FileHandler(const std::string &filename)
     this->filename = filename;
 }
 
-static FileHandler::FileHandler &getInstance(const std::string &filename)
-{
-    if (instance == nullptr)
-    {
-        instance = new FileHandler(filename);
-    }
-    return *instance;
-}
-
 bool FileHandler::writeFile(const std::string &record)
 {
     std::ofstream outFile(filename, std::ios::app); // Append mode
@@ -46,9 +37,9 @@ int FileHandler::searchCredentials(const std::string &username, const std::strin
     while (std::getline(inFile, line))
     {
         std::istringstream iss(line);
-        std::string userID, fileUsername, filePassword, name, age;
+        std::string userID, fileUsername, filePassword, name, age, userType;
 
-        if (!(iss >> userID >> fileUsername >> filePassword >> name >> age))
+        if (!(iss >> userID >> fileUsername >> filePassword >> name >> age >> userType))
         {
             continue; // Skip malformed lines
         }
@@ -57,10 +48,59 @@ int FileHandler::searchCredentials(const std::string &username, const std::strin
         {
             userDetails = line;
             inFile.close();
-            return userID;
+            return userType;
         }
     }
 
     inFile.close();
     return -1;
+}
+
+bool FileHandler::RemoveCredentials(const int &ID)
+{
+    std::ifstream inFile(filename);
+    std::ofstream tempFile("temp.txt");
+    std::string line;
+    bool found = false;
+
+    if (!inFile.is_open() || !tempFile.is_open())
+    {
+        std::cerr << "Unable to open file for reading or writing: " << filename << std::endl;
+        return false;
+    }
+
+    while (std::getline(inFile, line))
+    {
+        std::istringstream iss(line);
+        std::string userID, fileUsername, filePassword, name, age;
+
+        if (!(iss >> userID >> fileUsername >> filePassword >> name >> age))
+        {
+            tempFile << line << std::endl;
+            continue;
+        }
+
+        if (userID == ID)
+        {
+            found = true;
+            continue;
+        }
+
+        tempFile << line << std::endl;
+    }
+
+    inFile.close();
+    tempFile.close();
+
+    if (found)
+    {
+        std::remove(filename.c_str());
+        std::rename("temp.txt", filename.c_str());
+    }
+    else
+    {
+        std::remove("temp.txt");
+    }
+
+    return found;
 }

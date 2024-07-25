@@ -3,6 +3,7 @@
 #include "User.h"
 #include "Schedule.h"
 #include "MedicalRecord.h"
+#include "Slot.h"
 #include <string>
 #include <vector>
 
@@ -16,11 +17,11 @@ private:
 
 public:
     Patient(const std::string &username, const std::string &password, const std::string &name, const int &age, const int &weight, const std::string &bloodGroup);
+
     void ViewDoctorList(const std::string &departmentName);
     Schedule ViewMySchedule();
     void ViewMedicalRecords();
-    bool BookAppointment(const std::string &doctorName, const std::string &departmentName, const std::string &slot);
-    bool UpdateMyAccount(const int &option, const std::string &newData);
+    bool BookAppointment(Slot &slot);
 
     ~Patient();
 };

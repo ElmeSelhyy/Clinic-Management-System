@@ -1,4 +1,6 @@
-#include <timeSlot.h>
+#pragma once
+
+#include "timeSlot.h"
 #include "Doctor.h"  // Include the Doctor class definition
 #include "Patient.h" // Include the Patient class definition
 

@@ -22,10 +22,13 @@ void Patient::ViewMedicalRecords()
     }
 }
 
-bool Patient::BookAppointment(const std::string &doctorName, const std::string &departmentName, const std::string &slot)
+bool Patient::BookAppointment(Slot &slot)
 {
-    if (mySchedule.BookSlot(slot))
+    if (slot.isAvailable())
     {
+        slot.assignPatient(this);
+        mySchedule.addSlot(slot);
+        slot.isAvailable() = false;
         return true;
     }
     return false;
