@@ -1,8 +1,8 @@
 #pragma once
 
-#include "Slot.h"
+// #include "Slot.h"
 #include <vector>
-
+class Slot;
 class Schedule
 {
 private:
@@ -10,8 +10,9 @@ private:
 
 public:
     Schedule(int user_id, int user_type);
-    Slot getavailableSlots();
+    Schedule();
+    std::vector<Slot> getavailableSlots();
     void addSlot(Slot &slot);
     void removeSlot(Slot &slot);
-    void getSlots();
+    std::vector<Slot> getSlots();
 };

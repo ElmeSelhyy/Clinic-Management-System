@@ -1,3 +1,4 @@
+#pragma once
 #include <unordered_map>
 #include <vector>
 #include <unordered_set>
@@ -15,5 +16,4 @@ public:
     void addDoctor(Doctor &doctor);
     void removeDoctor(Doctor &doctor);
     void getDoctorList();
-
 };

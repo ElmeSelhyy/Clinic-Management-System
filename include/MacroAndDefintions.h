@@ -13,3 +13,28 @@ enum UserType
     DOCTOR,
     PATIENT
 };
+
+enum LoginSignUp
+{
+    LOGIN = 1,
+    SIGNUP
+};
+
+enum Day
+{
+    MONDAY,
+    TUESDAY,
+    WEDNESDAY,
+    THURSDAY,
+    FRIDAY,
+    SATURDAY,
+    SUNDAY
+};
+
+struct timeSlot
+{
+    int starthour;
+    int endhour;
+    Day day;
+    int date;
+};

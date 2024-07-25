@@ -1,10 +1,9 @@
 #include "../include/User.h"
 #include <iostream>
 
-
-User::User(std::string userName, std::string password, std::string name, int age, int userType,std::string usedId)
+User::User(std::string userName, std::string password, std::string name, int age, int userType, std::string usedId)
 {
-    this->usedId =usedId;
+    this->usedId = usedId;
     this->userName = userName;
     this->password = password;
     this->name = name;
@@ -12,20 +11,20 @@ User::User(std::string userName, std::string password, std::string name, int age
     this->userType = userType;
 }
 
-int User::Login(std::string userName, std::string password)
+std::string User::Login(std::string userName, std::string password)
 {
     FileHandler fileHandler = FileHandler(USER_FILE);
     return fileHandler.searchCredentials(userName, password);
 }
 
 // TODO
-// CHECK USERNAME IS USED 
+// CHECK USERNAME IS USED
 bool User::SignUp(std::string userName, std::string password, std::string name, int age, int userType)
-{   
+{
     UserCounter++;
     FileHandler fileHandler = FileHandler(USER_FILE);
-    std::string userReferenceId= (userType == DOCTOR) ? ("#" + std::to_string(UserCounter)) : ("@" + std::to_string(UserCounter));
-    return fileHandler.writeFile(userReferenceId + " " + userName + " " + password + " " + name + " " + std::to_string(age) + " " +std::to_string(userType));
+    std::string userReferenceId = (userType == DOCTOR) ? ("#" + std::to_string(UserCounter)) : ("@" + std::to_string(UserCounter));
+    return fileHandler.writeFile(userReferenceId + " " + userName + " " + password + " " + name + " " + std::to_string(age) + " " + std::to_string(userType) + "\n");
 }
 
 std::string User::getMyId()
@@ -33,4 +32,9 @@ std::string User::getMyId()
     return usedId;
 }
 
-int User:: UserCounter=0;
+std::string User::getName()
+{
+    return name;
+}
+
+int User::UserCounter = 0;

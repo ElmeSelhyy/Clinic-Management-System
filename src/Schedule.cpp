@@ -2,6 +2,10 @@
 #include "FileHandler.h"
 #include <vector>
 
+Schedule::Schedule()
+{
+    // Default constructor
+}
 Schedule::Schedule(std::string user_id, int user_type)
 {
     FileGandler &fileHandler = FileHandler(SLOT_FILE);

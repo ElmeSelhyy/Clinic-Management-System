@@ -1,12 +1,11 @@
-#include "Doctor.h"
-#include "Slot.h"
-#include "Department.h"
-#include "SCHEDULE.h"
-#include <Logger.h>
-
-Doctor::Doctor(const std::string &username, const std::string &password, const std::string &name, const int &age,std::string departmentname): User(username, password, name, age)
+#include "../include/Doctor.h"
+#include "../include/Slot.h"
+#include "../include/Department.h"
+#include "../include/Schedule.h"
+#include "../include/MacroAndDefintions.h"
+Doctor::Doctor(const std::string &username, const std::string &password, const std::string &name, const int &age, std::string usedID, std::string departmentname) : User(username, password, name, age, DOCTOR, usedID)
 {
-    this->departmentname=departmentname;
+    this->departmentname = departmentname;
 }
 
 // Set the schedule for the doctor
@@ -18,7 +17,7 @@ void Doctor::SetSchedule(timeSlot &timeslot)
 
 bool Doctor::RemoveSchedule(Slot &slot)
 {
-    for (auto it = doctorschedule.slots.begin(); it != doctorschedule.slots.end(); it++)
+    for (auto it = doctorschedule.getSlots().begin(); it != doctorschedule.getSlots().end(); it++)
     {
         if (it->gettimeSlot() == slot.gettimeSlot())
         {
@@ -29,14 +28,7 @@ bool Doctor::RemoveSchedule(Slot &slot)
     return false;
 }
 
-
 std::string Doctor::getDepartmentName()
 {
     return departmentname;
-}
-
-// Get the doctor's name
-std::string Doctor::getDoctorName()
-{
-    return name;
 }

@@ -6,11 +6,13 @@ Slot::Slot(Doctor *doctor, timeSlot slot)
     doctorPtr = doctor;
     this->slot = slot;
 }
+
+Slot::Slot()
 {
-    this->id = id++;
-    doctorPtr = doctor;
-}
-{
+
+    doctorPtr = nullptr;
+    patientPtr = nullptr;
+    this->slot = nullptr;
 }
 Doctor *Slot::getDoctorPtr()
 {
@@ -26,7 +28,7 @@ timeSlot Slot::gettimeSlot()
 {
     return slot_time;
 }
-bool Slot::isAvailable();
+bool Slot::isAvailable()
 {
     return available;
 }

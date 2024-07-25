@@ -62,7 +62,18 @@
     "xloctime": "cpp",
     "unordered_set": "cpp",
     "algorithm": "cpp",
-    "optional": "cpp"
+    "optional": "cpp",
+    "array": "cpp",
+    "*.tcc": "cpp",
+    "cstdarg": "cpp",
+    "cwctype": "cpp",
+    "deque": "cpp",
+    "functional": "cpp",
+    "memory_resource": "cpp",
+    "numeric": "cpp",
+    "random": "cpp",
+    "string_view": "cpp",
+    "numbers": "cpp"
   },
   "C_Cpp.errorSquiggles": "disabled"
 }

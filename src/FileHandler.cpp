@@ -23,14 +23,14 @@ bool FileHandler::writeFile(const std::string &record)
     return true;
 }
 
-int FileHandler::searchCredentials(const std::string &username, const std::string &password)
+std::string FileHandler::searchCredentials(const std::string &username, const std::string &password)
 {
     std::ifstream inFile(this->filename);
     std::string line;
     if (!inFile.is_open())
     {
         std::cerr << "Unable to open file for reading: " << this->filename << std::endl;
-        return false;
+        return nullptr;
     }
 
     while (std::getline(inFile, line))
@@ -42,16 +42,15 @@ int FileHandler::searchCredentials(const std::string &username, const std::strin
         {
             continue; // Skip malformed lines
         }
-        std::cout<<"fileUsername: "<<fileUsername<<"\n";
         if (fileUsername == username && filePassword == password)
         {
             inFile.close();
-            return stoi(userType);
+            return userID;
         }
     }
 
     inFile.close();
-    return -1;
+    return nullptr;
 }
 
 bool FileHandler::RemoveCredentials(const int &ID)
@@ -103,7 +102,7 @@ bool FileHandler::RemoveCredentials(const int &ID)
     return found;
 }
 
-std::vector<std::string> FileHandler::SearchinFile(const std::string &Keyword)
+std::vector<std::string> FileHandler::getAllDataWithID(const std::string &Keyword)
 {
     std::ifstream inFile(this->filename);
     std::string line;
@@ -120,6 +119,31 @@ std::vector<std::string> FileHandler::SearchinFile(const std::string &Keyword)
         if (line.find(Keyword) != std::string::npos)
         {
             searchResults.push_back(line);
+        }
+    }
+
+    inFile.close();
+    return searchResults;
+}
+
+std::string FileHandler::getFirstDataWithID(const std::string &Keyword)
+{
+    std::ifstream inFile(this->filename);
+    std::string line;
+    std::string searchResults = "";
+
+    if (!inFile.is_open())
+    {
+        std::cerr << "Unable to open file for reading: " << this->filename << std::endl;
+        return searchResults;
+    }
+
+    while (std::getline(inFile, line))
+    {
+        if (line.find(Keyword) != std::string::npos)
+        {
+            searchResults = line;
+            break;
         }
     }
 
