@@ -14,7 +14,7 @@ private:
     int age;
     int userType;
 
-    User(std::string userName, std::string password, std::string name, int age, int userType);
+    User(std::string userName, std::string password, std::string name, int age, int userType,std::string usedId);
 
 public:
     int Login(std::string userName, std::string password);

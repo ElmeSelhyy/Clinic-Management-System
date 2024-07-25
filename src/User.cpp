@@ -1,10 +1,10 @@
 #include "../include/User.h"
+#include <iostream>
 
 
-User::User(std::string userName, std::string password, std::string name, int age, int userType)
+User::User(std::string userName, std::string password, std::string name, int age, int userType,std::string usedId)
 {
-    UserCounter++;
-    this->usedId = userType == DOCTOR ? "#" + UserCounter : "@" + UserCounter;
+    this->usedId =usedId;
     this->userName = userName;
     this->password = password;
     this->name = name;
@@ -18,13 +18,19 @@ int User::Login(std::string userName, std::string password)
     return fileHandler.searchCredentials(userName, password);
 }
 
+// TODO
+// CHECK USERNAME IS USED 
 bool User::SignUp(std::string userName, std::string password, std::string name, int age, int userType)
-{
+{   
+    UserCounter++;
     FileHandler fileHandler = FileHandler(USER_FILE);
-    return fileHandler.writeFile(usedId + " " + userName + " " + password + " " + name + " " + std::to_string(age));
+    std::string userReferenceId= (userType == DOCTOR) ? ("#" + std::to_string(UserCounter)) : ("@" + std::to_string(UserCounter));
+    return fileHandler.writeFile(userReferenceId + " " + userName + " " + password + " " + name + " " + std::to_string(age) + " " +std::to_string(userType));
 }
 
 std::string User::getMyId()
 {
     return usedId;
 }
+
+int User:: UserCounter=0;

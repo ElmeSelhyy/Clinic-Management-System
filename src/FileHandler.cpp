@@ -27,7 +27,6 @@ int FileHandler::searchCredentials(const std::string &username, const std::strin
 {
     std::ifstream inFile(this->filename);
     std::string line;
-
     if (!inFile.is_open())
     {
         std::cerr << "Unable to open file for reading: " << this->filename << std::endl;
@@ -43,7 +42,7 @@ int FileHandler::searchCredentials(const std::string &username, const std::strin
         {
             continue; // Skip malformed lines
         }
-
+        std::cout<<"fileUsername: "<<fileUsername<<"\n";
         if (fileUsername == username && filePassword == password)
         {
             inFile.close();
