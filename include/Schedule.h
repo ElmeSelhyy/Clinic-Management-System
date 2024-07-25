@@ -8,7 +8,7 @@ private:
 
 public:
     Slot getavailableSlots();
-    void addSlot(Slot slot);
-    void removeSlot(Slot slot);
+    void addSlot(Slot &slot);
+    void removeSlot(Slot &slot);
     void getSlots();
 };

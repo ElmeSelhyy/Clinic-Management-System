@@ -3,7 +3,7 @@ class Slot;
 class Department;
 class SCHEDULE;
 
-class Doctor : private User
+class Doctor
 {
 private:
     SCHEDULE doctorschedule;
@@ -11,8 +11,8 @@ private:
     std::string status;
 
 public:
-    void SetSchedule(timeSlot slot);
-    bool RemoveSchedule(Slot slot);
+    void SetSchedule(timeSlot &slot);
+    bool RemoveSchedule(Slot &slot);
     Department getDepartmentName();
     std::string getDoctorName();
 };
