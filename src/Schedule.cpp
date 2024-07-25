@@ -1,11 +1,11 @@
 #include "../include/Schedule.h"
 
-void Schedule::addSlot(Slot slot)
+void Schedule::addSlot(Slot &slot)
 {
     slots.push_back(slot);
 }
 
-void Schedule::removeSlot(Slot slot)
+void Schedule::removeSlot(Slot &slot)
 {
     for (int i = 0; i < slots.size(); i++)
     {

@@ -5,17 +5,21 @@
 #include <Logger.h>
 
 // Set the schedule for the doctor
-void Doctor::SetSchedule(timeSlot timeslot)
+void Doctor::SetSchedule(timeSlot &timeslot)
 {
     Slot slot = Slot(this, timeslot);
     doctorschedule.addSlot(slot);
 }
 
-bool Doctor::RemoveSchedule(Slot slot)
+bool Doctor::RemoveSchedule(Slot &slot)
 {
-    if (doctorschedule.removeSlot(slot))
+    for (auto it = doctorschedule.slots.begin(); it != doctorschedule.slots.end(); it++)
     {
-        return true;
+        if (it->gettimeSlot() == slot.gettimeSlot())
+        {
+            doctorschedule.removeSlot(*it);
+            return true;
+        }
     }
     return false;
 }

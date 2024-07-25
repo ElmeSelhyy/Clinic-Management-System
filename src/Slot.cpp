@@ -30,3 +30,13 @@ bool Slot::isAvailable();
 {
     return available;
 }
+void Slot::assignPatient(Patient *patient)
+{
+    patientPtr = patient;
+    available = false;
+}
+void Slot::removePatient()
+{
+    patientPtr = nullptr;
+    available = true;
+}

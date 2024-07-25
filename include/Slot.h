@@ -17,4 +17,6 @@ public:
     timeSlot *gettimeSlot();
     bool isAvailable();
     Slot(Doctor *doctor, timeSlot slot);
+    void assignPatient(Patient *patient);
+    void removePatient();
 };
