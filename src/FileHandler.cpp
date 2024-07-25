@@ -1,4 +1,4 @@
-#include "include/FileHandler.h"
+#include "../include/FileHandler.h"
 #include <fstream>
 #include <sstream>
 #include <iostream>
@@ -46,9 +46,8 @@ int FileHandler::searchCredentials(const std::string &username, const std::strin
 
         if (fileUsername == username && filePassword == password)
         {
-            userDetails = line;
             inFile.close();
-            return userType;
+            return stoi(userType);
         }
     }
 
@@ -80,7 +79,7 @@ bool FileHandler::RemoveCredentials(const int &ID)
             continue;
         }
 
-        if (userID == ID)
+        if (stoi(userID) == ID)
         {
             found = true;
             continue;
@@ -105,11 +104,11 @@ bool FileHandler::RemoveCredentials(const int &ID)
     return found;
 }
 
-std::vector<string> FileHandler::SearchinFile(const std::string &Keyword)
+std::vector<std::string> FileHandler::SearchinFile(const std::string &Keyword)
 {
     std::ifstream inFile(this->filename);
     std::string line;
-    std::vector<string> searchResults;
+    std::vector<std::string> searchResults;
 
     if (!inFile.is_open())
     {

@@ -1,5 +1,7 @@
 #pragma once
 #include <string>
+#include "../include/MacroAndDefintions.h"
+#include "../include/FileHandler.h"
 
 class User
 {
@@ -15,9 +17,9 @@ private:
     User(std::string userName, std::string password, std::string name, int age, int userType);
 
 public:
-    bool Login(std::string userName, std::string password);
+    int Login(std::string userName, std::string password);
     bool SignUp(std::string userName, std::string password, std::string name, int age, int userType);
-    bool ChangePassword(std::string newPassword);
-    int getMyId();
-    ~User();
+    // bool ChangePassword(std::string newPassword);
+    std::string getMyId();
+    // ~User();
 };
