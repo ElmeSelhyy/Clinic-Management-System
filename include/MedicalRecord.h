@@ -1,3 +1,5 @@
+#pragma once
+
 #include <string>
 
 class MedicalRecord
@@ -12,9 +14,10 @@ private:
     std::string medicalNeeded;
 
 public:
-    MedicalRecord(int patientId,int doctorId);
+    MedicalRecord(int patientId, int doctorId);
     void setDiagnosisResult(std::string diagnosisResult);
-    void setMedicalNeeded( std::string medicalNeeded);
+    void setMedicalNeeded(std::string medicalNeeded);
     std::string viewDiagnosis();
     std::string viewMedicalNeeded();
+    std::string getMedicalRecord();
 };

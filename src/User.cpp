@@ -2,7 +2,8 @@
 
 User::User(std::string userName, std::string password, std::string name, int age)
 {
-    usedId++;
+    UserCounter++;
+    this->usedId = UserCounter;
     this->userName = userName;
     this->password = password;
     this->name = name;
@@ -19,4 +20,9 @@ bool User::SignUp(std::string userName, std::string password, std::string name, 
 {
     FileHandler &fileHandler = FileHandler::getInstance("users.txt");
     return fileHandler.writeFile(std::to_string(usedId) + " " + userName + " " + password + " " + name + " " + std::to_string(age));
+}
+
+int User::getMyId()
+{
+    return usedId;
 }

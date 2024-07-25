@@ -4,7 +4,8 @@
 class User
 {
 private:
-    static int usedId;
+    static int UserCounter;
+    int usedId;
     std::string userName;
     std::string password;
     std::string name;
@@ -16,5 +17,6 @@ public:
     bool Login(std::string userName, std::string password);
     bool SignUp(std::string userName, std::string password, std::string name, int age);
     bool ChangePassword(std::string newPassword);
+    int getMyId();
     ~User();
 };
