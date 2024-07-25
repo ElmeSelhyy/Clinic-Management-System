@@ -3,15 +3,16 @@
 #include "../include/Department.h"
 #include "../include/Schedule.h"
 #include "../include/MacroAndDefintions.h"
-Doctor::Doctor(const std::string &username, const std::string &password, const std::string &name, const int &age, std::string usedID, std::string departmentname) : User(username, password, name, age, DOCTOR, usedID)
+Doctor::Doctor(const std::string &DoctorID, const std::string &username, const std::string &password, const std::string &name, const int &age, std::string usedID, std::string departmentname) : User(username, password, name, age, DOCTOR, usedID)
 {
+    this->doctorschedule = Schedule(DoctorID, DOCTOR);
     this->departmentname = departmentname;
 }
 
 // Set the schedule for the doctor
-void Doctor::SetSchedule(timeSlot &timeslot)
+void Doctor::SetSchedule(std::string &timeslot)
 {
-    Slot slot = Slot(this->getMyId(), timeslot);
+    std::string slot = "NULL " + timeslot;
     doctorschedule.addSlot(slot);
 }
 
@@ -31,4 +32,9 @@ bool Doctor::RemoveSchedule(Slot &slot)
 std::string Doctor::getDepartmentName()
 {
     return departmentname;
+}
+
+std::vector<std::string> Doctor::getScheduler()
+{
+    return doctorschedule.getSlots();
 }

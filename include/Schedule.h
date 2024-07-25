@@ -1,18 +1,18 @@
 #pragma once
 #include <string>
 #include <vector>
-#include "Slot.h"
+// #include "Slot.h"
 
 class Schedule
 {
 private:
-    std::vector<Slot> slots;
+    std::vector<std::string> slots;
 
 public:
     Schedule(std::string user_id, int user_type);
     Schedule();
-    std::vector<Slot> getavailableSlots();
-    void addSlot(Slot &slot);
-    void removeSlot(Slot &slot);
-    std::vector<Slot> getSlots();
+    std::vector<std::string> getavailableSlots();
+    void addSlot(std::string &slot);
+    void removeSlot(std::string &slot);
+    std::vector<std::string> getSlots();
 };

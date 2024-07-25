@@ -4,7 +4,6 @@
 #include "Slot.h"
 #include <string>
 
-
 class Doctor : public User
 {
 private:
@@ -13,8 +12,10 @@ private:
     std::string status;
 
 public:
-    Doctor(const std::string &username, const std::string &password, const std::string &name, const int &age, std::string usedID, std::string departmentname);
-    void SetSchedule(timeSlot &slot);
+    Doctor(const std::string &DoctorID, const std::string &username, const std::string &password, const std::string &name, const int &age, std::string usedID, std::string departmentname);
+    std::vector<std::string> getScheduler();
+
+    void SetSchedule(std::string &timeslot);
     bool RemoveSchedule(Slot &slot);
     std::string getDepartmentName();
 };

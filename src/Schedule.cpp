@@ -3,7 +3,8 @@
 #include "../include/MacroAndDefintions.h"
 #include <vector>
 #include <algorithm>
-
+#include <string>
+#include <sstream>
 Schedule::Schedule()
 {
     // Default constructor
@@ -11,44 +12,45 @@ Schedule::Schedule()
 Schedule::Schedule(std::string user_id, int user_type)
 {
     FileHandler fileHandler = FileHandler(SLOT_FILE);
-    std::vector<std::string> slots = fileHandler.getAllDataWithID(user_id);
-    // for (int i = 0; i < slots.size(); i++)
-    // {
-    //     std::vector<std::string> slot = split(slots[i], ' ');
-    //     Slot newSlot = Slot(slot[0], slot[1], slot[2], slot[3], slot[4]);
-    //     slots.push_back(newSlot);
-    // }
+    this->slots = fileHandler.getAllDataWithID(user_id);
 }
 
-void Schedule::addSlot(Slot &slot)
+void Schedule::addSlot(std::string &slot)
 {
     slots.push_back(slot);
 }
 
-void Schedule::removeSlot(Slot &slot)
+void Schedule::removeSlot(std::string &slot)
 {
-    // for (int i = 0; i < slots.size(); i++)
-    // {
-    //     if (slots[i].getDoctorPtr() == slot.getDoctorPtr() && slots[i].gettimeSlot() == slot.gettimeSlot())
-    //     {
-    //         slots.erase(slots.begin() + i);
-    //     }
-    // }
+    for (int i = 0; i < slots.size(); i++)
+    {
+        if (slots[i] == slot)
+        {
+            slots.erase(slots.begin() + i);
+            break;
+        }
+    }
 }
 
-std::vector<Slot> Schedule::getavailableSlots()
+std::vector<std::string> Schedule::getavailableSlots()
 {
-    std::vector<Slot> slotss;
-    // Filter the existing slots vector to remove unavailable slots
-    // slots.erase(
-    //     std::remove_cv(slots.begin(), slots.end(), [](const Slot &slot)
-    //                    { return slot.getPatientPtr() == nullptr; }),
-    //     slots.end());
+    std::vector<std::string> slots;
 
-    // Return the filtered slots vector
-    return slotss;
+    for (int i = 0; i < slots.size(); i++)
+    {
+        std::istringstream iss(slots[i]);
+        std::string patientName;
+        iss >> patientName;
+        if (patientName == "NULL")
+        {
+            slots.push_back(slots[i]);
+        }
+    }
+
+    return slots;
 }
-std::vector<Slot> Schedule::getSlots()
+
+std::vector<std::string> Schedule::getSlots()
 {
     return slots;
 }

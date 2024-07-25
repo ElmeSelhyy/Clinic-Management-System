@@ -1,4 +1,4 @@
-#include "../include/screenOne.h"
+#include "../include/screens.h"
 
 void ScreenOne()
 {
@@ -28,7 +28,7 @@ void ScreenOne()
         userId = User::Login(userName, password);
         if (userId[0] == '#')
         {
-            // doctorScren(userId);
+            doctorScreen(userId);
             std::cout << "DOCTOR\n";
         }
         else if (userId[0] == '@')
