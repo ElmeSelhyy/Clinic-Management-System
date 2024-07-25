@@ -4,8 +4,8 @@
 #include "Doctor.h"
 class Department
 {
-    std::unordered_map<std::string, std::vector<Doctor>> departmentmap;
-    std::string departmentname;
+    std::unordered_map<std::string, std::vector<Doctor>> departments;
+    std::string departmentName;
 
 public:
     void addDoctor(Doctor doctor);
