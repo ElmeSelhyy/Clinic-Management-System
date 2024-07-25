@@ -1,18 +1,20 @@
+#pragma once
+#include "User.h"
+#include "Schedule.h"
+#include "Slot.h"
 #include <string>
-class Slot;
-class Department;
-class SCHEDULE;
 
-class Doctor
+
+class Doctor : public User
 {
 private:
-    SCHEDULE doctorschedule;
-    Department departmentname;
+    Schedule doctorschedule;
+    std::string departmentname;
     std::string status;
 
 public:
     void SetSchedule(timeSlot &slot);
     bool RemoveSchedule(Slot &slot);
-    Department getDepartmentName();
+    std::string getDepartmentName();
     std::string getDoctorName();
 };

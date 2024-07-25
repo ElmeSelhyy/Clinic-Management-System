@@ -24,8 +24,8 @@ bool Doctor::RemoveSchedule(Slot &slot)
     return false;
 }
 
-// Get the department name
-Department Doctor::getDepartmentName()
+
+std::string Doctor::getDepartmentName()
 {
     return departmentname;
 }

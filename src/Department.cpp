@@ -2,6 +2,7 @@
 
 Department::Department(std::string departmentname) : departmentname(departmentname)
 {
+     this->departmentList.insert(departmentname);
 }
 
 void Department::addDoctor(Doctor &doctor)
