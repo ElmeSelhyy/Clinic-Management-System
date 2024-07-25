@@ -11,20 +11,20 @@ Doctor::Doctor(const std::string &username, const std::string &password, const s
 // Set the schedule for the doctor
 void Doctor::SetSchedule(timeSlot &timeslot)
 {
-    Slot slot = Slot(this, timeslot);
+    Slot slot = Slot(this->getMyId(), timeslot);
     doctorschedule.addSlot(slot);
 }
 
 bool Doctor::RemoveSchedule(Slot &slot)
 {
-    for (auto it = doctorschedule.getSlots().begin(); it != doctorschedule.getSlots().end(); it++)
-    {
-        if (it->gettimeSlot() == slot.gettimeSlot())
-        {
-            doctorschedule.removeSlot(*it);
-            return true;
-        }
-    }
+    // for (auto it = doctorschedule.getSlots().begin(); it != doctorschedule.getSlots().end(); it++)
+    // {
+    //     if (it->gettimeSlot() == slot.gettimeSlot())
+    //     {
+    //         doctorschedule.removeSlot(*it);
+    //         return true;
+    //     }
+    // }
     return false;
 }
 

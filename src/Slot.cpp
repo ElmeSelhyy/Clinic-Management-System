@@ -1,44 +1,47 @@
 #include "../include/Slot.h"
 
-Slot::Slot(Doctor *doctor, timeSlot slot)
+Slot::Slot(std::string doctorId, timeSlot slot)
 {
-    this->id = id++;
-    doctorPtr = doctor;
+    this->id = idNext++;
+    this->doctorId = doctorId;
     this->slot = slot;
 }
 
 Slot::Slot()
 {
-
-    doctorPtr = nullptr;
-    patientPtr = nullptr;
-    this->slot = nullptr;
-}
-Doctor *Slot::getDoctorPtr()
-{
-    return doctorPtr;
+    doctorId = "";
+    patientId = "";
 }
 
-Patient *Slot::getPatientPtr()
+std::string Slot::getDoctorId()
 {
-    return patientPtr;
+    return doctorId;
+}
+
+std::string Slot::getPatientId()
+{
+    return patientId;
 }
 
 timeSlot Slot::gettimeSlot()
 {
-    return slot_time;
+    return slot;
 }
 bool Slot::isAvailable()
 {
     return available;
 }
-void Slot::assignPatient(Patient *patient)
+
+void Slot::assignPatient(std::string patient)
 {
-    patientPtr = patient;
+    patientId = patient;
     available = false;
 }
+
 void Slot::removePatient()
 {
-    patientPtr = nullptr;
+    patientId = "";
     available = true;
 }
+
+int Slot:: idNext=0 ;

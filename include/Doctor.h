@@ -1,10 +1,9 @@
 #pragma once
 #include "User.h"
 #include "Schedule.h"
-// #include "Slot.h"
+#include "Slot.h"
 #include <string>
 
-class Slot;
 
 class Doctor : public User
 {

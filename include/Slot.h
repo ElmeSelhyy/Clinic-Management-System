@@ -1,26 +1,26 @@
 #pragma once
 
 #include "MacroAndDefintions.h"
-// #include "Doctor.h"  // Include the Doctor class definition
-#include "Patient.h" // Include the Patient class definition
-class doctor;        // Forward declaration of the Doctor class
+#include <string>
+
 class Slot
 {
 private:
-    static int id;
-    Doctor *doctorPtr;
-    Patient *patientPtr;
+    static int idNext;
+    int id;
+    std::string doctorId;
+    std::string patientId;
     bool available;
-    timeSlot slot_time;
+    timeSlot slot;
 
 public:
-    Slot(Doctor *doctor, timeSlot slot);
+    Slot(std::string doctorId, timeSlot slot);
     Slot();
-    Doctor *getDoctorPtr();
-    Patient *getPatientPtr();
-    timeSlot *gettimeSlot();
+    std::string getDoctorId();
+    std::string getPatientId();
+    timeSlot gettimeSlot();
     bool isAvailable();
 
-    void assignPatient(Patient *patient);
+    void assignPatient(std::string patient);
     void removePatient();
 };

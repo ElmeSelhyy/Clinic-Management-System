@@ -1,9 +1,11 @@
 #include <iostream>
 #include "../include/User.h"
 #include <string>
+#include "../include/screenOne.h"
 
 int main()
 {
-    int value = ScreenOne();
+    ScreenOne();
+
     return 0;
 }

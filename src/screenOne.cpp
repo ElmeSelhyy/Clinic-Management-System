@@ -1,8 +1,6 @@
-#include <iostream>
-#include "../include/User.h"
-#include <string>
+#include "../include/screenOne.h"
 
-void ScreenOne
+void ScreenOne()
 {
     std::cout << "Choose an option: \n1. Login\n2. SignUp\n";
     int option;
@@ -30,7 +28,7 @@ void ScreenOne
         userId = User::Login(userName, password);
         if (userId[0] == '#')
         {
-            doctorScren(userId);
+            // doctorScren(userId);
             std::cout << "DOCTOR\n";
         }
         else if (userId[0] == '@')
@@ -51,7 +49,7 @@ void ScreenOne
         std::cout << std::endl
                   << "Choose your type: \n1. Doctor\n2. Patient\n";
         std::cin >> userId;
-        if (userId == DOCTOR)
+        if (stoi(userId) == DOCTOR)
         {
             if (User::SignUp(userName, password, name, age, DOCTOR))
             {
