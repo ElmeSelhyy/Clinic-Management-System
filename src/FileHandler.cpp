@@ -104,3 +104,27 @@ bool FileHandler::RemoveCredentials(const int &ID)
 
     return found;
 }
+
+std::vector<string> FileHandler::SearchinFile(const std::string &Keyword)
+{
+    std::ifstream inFile(this->filename);
+    std::string line;
+    std::vector<string> searchResults;
+
+    if (!inFile.is_open())
+    {
+        std::cerr << "Unable to open file for reading: " << this->filename << std::endl;
+        return searchResults;
+    }
+
+    while (std::getline(inFile, line))
+    {
+        if (line.find(Keyword) != std::string::npos)
+        {
+            searchResults.push_back(line);
+        }
+    }
+
+    inFile.close();
+    return searchResults;
+}

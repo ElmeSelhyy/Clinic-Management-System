@@ -3,7 +3,7 @@
 User::User(std::string userName, std::string password, std::string name, int age, int userType)
 {
     UserCounter++;
-    this->usedId = UserCounter;
+    this->usedId = userType == DOCTOR ? "#" + UserCounter : "@" + UserCounter;
     this->userName = userName;
     this->password = password;
     this->name = name;

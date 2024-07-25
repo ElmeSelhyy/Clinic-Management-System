@@ -1,4 +1,18 @@
 #include "../include/Schedule.h"
+#include "FileHandler.h"
+#include <vector>
+
+Schedule::Schedule(std::string user_id, int user_type)
+{
+    FileGandler &fileHandler = FileHandler(SLOT_FILE);
+    std::vector<std::string> slots = fileHandler.SearchinFile(user_id);
+    for (int i = 0; i < slots.size(); i++)
+    {
+        std::vector<std::string> slot = split(slots[i], ' ');
+        Slot newSlot = Slot(slot[0], slot[1], slot[2], slot[3], slot[4]);
+        slots.push_back(newSlot);
+    }
+}
 
 void Schedule::addSlot(Slot &slot)
 {

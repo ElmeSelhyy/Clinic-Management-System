@@ -5,7 +5,7 @@ class User
 {
 private:
     static int UserCounter;
-    int usedId;
+    std::string usedId;
     std::string userName;
     std::string password;
     std::string name;
