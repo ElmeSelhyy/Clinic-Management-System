@@ -1,5 +1,5 @@
-#include "include/User.h"
-#include "MacroAndDefintions.h"
+#include "../include/User.h"
+#include "../include/MacroAndDefintions.h"
 User::User(std::string userName, std::string password, std::string name, int age, int userType)
 {
     UserCounter++;
