@@ -33,6 +33,7 @@ void ScreenOne()
         }
         else if (userId[0] == '@')
         {
+            patientScreen(userId);
             std::cout << "PATIENT\n";
         }
         break;

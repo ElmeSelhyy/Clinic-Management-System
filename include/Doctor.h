@@ -16,6 +16,6 @@ public:
     std::vector<std::string> getScheduler();
 
     void SetSchedule(std::string &timeslot);
-    bool RemoveSchedule(Slot &slot);
+    bool RemoveSchedule(std::string &slot);
     std::string getDepartmentName();
 };

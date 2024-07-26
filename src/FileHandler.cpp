@@ -126,6 +126,28 @@ std::vector<std::string> FileHandler::getAllDataWithID(const std::string &Keywor
     return searchResults;
 }
 
+std::vector<std::string> FileHandler::getAllData()
+{
+    std::ifstream inFile(this->filename);
+    std::string line;
+    std::vector<std::string> searchResults;
+
+    if (!inFile.is_open())
+    {
+        std::cerr << "Unable to open file for reading: " << this->filename << std::endl;
+        return searchResults;
+    }
+
+    while (std::getline(inFile, line))
+    {
+
+        searchResults.push_back(line);
+    }
+
+    inFile.close();
+    return searchResults;
+}
+
 std::string FileHandler::getFirstDataWithID(const std::string &Keyword)
 {
     std::ifstream inFile(this->filename);
