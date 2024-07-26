@@ -18,6 +18,10 @@ Schedule::Schedule(std::string user_id, int user_type)
 void Schedule::addSlot(std::string &slot)
 {
     slots.push_back(slot);
+     FileHandler fileHandler = FileHandler(SLOT_FILE);
+    fileHandler.writeFile(slot);
+
+
 }
 
 void Schedule::removeSlot(std::string &slot)

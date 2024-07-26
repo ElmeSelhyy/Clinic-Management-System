@@ -12,7 +12,7 @@ Doctor::Doctor(const std::string &DoctorID, const std::string &username, const s
 // Set the schedule for the doctor
 void Doctor::SetSchedule(std::string &timeslot)
 {
-    std::string slot = "NULL " + timeslot;
+    std::string slot = "\n#"+ this->getMyId() +" NULL " + timeslot;
     doctorschedule.addSlot(slot);
 }
 

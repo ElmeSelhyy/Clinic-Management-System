@@ -17,26 +17,55 @@ void doctorScreen(std::string doctorID)
     std::cout << "Welcome Doctor " << name << "\nDepartment " << departmentName << std::endl;
 
     int option;
-    std::cout << "Choose an option: \n1. View Appointments\n2. Set Schedule\n3. Remove Schedule\n 4.logout\n";
-    std::cin >> option;
-
-    while (option != 1 && option != 2 && option != 3 && option != 4)
-    {
-        std::cout << "Invalid option. Please choose again.\n";
-        std::cin >> option;
-    }
-
-    switch (option)
-    {
-    case 1:
-    {
-        Doctor doctor = Doctor(doctorID, userName, password, name, stoi(age), userId, departmentName);
-        std::vector<std::string> appointments = doctor.getScheduler();
-        for (int i = 0; i < appointments.size(); i++)
+    while(1)
         {
-            std::cout << appointments[i] << std::endl;
+        std::cout << "Choose an option: \n1. View Appointments\n2. Set Schedule\n3. Remove Schedule\n 4.logout\n";
+        std::cin >> option;
+
+        while (option != 1 && option != 2 && option != 3 && option != 4)
+        {
+            std::cout << "Invalid option. Please choose again.\n";
+            std::cin >> option;
         }
-        break;
-    }
-    }
+
+        switch (option)
+        {
+        case 1:
+        {
+            Doctor doctor = Doctor(doctorID, userName, password, name, stoi(age), userId, departmentName);
+            std::vector<std::string> appointments = doctor.getScheduler();
+            for (int i = 0; i < appointments.size(); i++)
+            {
+                if(appointments[i].find("NULL") == std::string::npos)
+                    std::cout << appointments[i] << std::endl;
+            }
+            break;
+        }
+        case 2:
+        {
+            Doctor doctor = Doctor(doctorID, userName, password, name, stoi(age), userId, departmentName);
+            std::string TimeSlot;
+            std::string timeslot_date;
+            std::string timeslot_start_hour;
+            std::string timeslot_end_hour;
+
+          
+            std::cout << "Please enter the Date.\n";
+            std::cin >> timeslot_date;
+            std::cout << "Please enter the Start Hour.\n";
+            std::cin >> timeslot_start_hour;
+            std::cout << "Please enter the End Hour.\n";
+            std::cin >> timeslot_end_hour;
+            TimeSlot = timeslot_date + " " + timeslot_start_hour + " " + timeslot_end_hour;
+        
+            doctor.SetSchedule(TimeSlot);
+            std:: cout << "Schedule set successfully\n";
+            break;
+        }
+        case 4:
+        {
+            return;
+        }
+        }
+}
 }

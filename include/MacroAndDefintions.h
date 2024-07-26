@@ -35,6 +35,5 @@ struct timeSlot
 {
     int starthour;
     int endhour;
-    Day day;
     int date;
 };
