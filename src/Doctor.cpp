@@ -12,16 +12,17 @@ Doctor::Doctor(const std::string &DoctorID, const std::string &username, const s
 // Set the schedule for the doctor
 void Doctor::SetSchedule(std::string &timeslot)
 {
-    std::string slot = "\n#"+ this->getMyId() +" NULL " + timeslot;
+    std::string slot = "\n#" + this->getMyId() + " @0 " + "NULL " + timeslot;
     doctorschedule.addSlot(slot);
 }
 
 bool Doctor::RemoveSchedule(std::string &slot)
 {
-    //TODO: Implement this function to remove a slot from the doctor's schedule
-    slot= "\n#"+ this->getMyId() +" NULL " + slot;
-   
-    return  doctorschedule.removeSlot(slot);;
+    // TODO: Implement this function to remove a slot from the doctor's schedule
+    slot = "\n#" + this->getMyId() + " NULL " + slot;
+
+    return doctorschedule.removeSlot(slot);
+    ;
 }
 
 std::string Doctor::getDepartmentName()

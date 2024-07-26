@@ -7,13 +7,13 @@
 
 class Department
 {
-    static std::unordered_set<std::string> departmentList;
-    std::unordered_map<std::string, std::vector<Doctor>> departments;
-    std::string departmentName;
+    std::unordered_set<std::string> departmentList;
+    std::unordered_map<std::string, std::vector<std::string>> departments;
 
 public:
-    Department(std::string departmentname);
+    Department();
     void addDoctor(Doctor &doctor);
     void removeDoctor(Doctor &doctor);
-    void getDoctorList();
+    void getDoctorList(std::string departmentname);
+    void getDepartmentList();
 };
