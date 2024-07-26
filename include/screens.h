@@ -8,3 +8,5 @@
 void ScreenOne();
 
 void doctorScreen(std::string doctorID);
+
+void patientScreen(std::string patientId);

@@ -3,7 +3,6 @@
 #include "User.h"
 #include "Schedule.h"
 #include "MedicalRecord.h"
-#include "Slot.h"
 #include <string>
 #include <vector>
 
@@ -16,12 +15,12 @@ private:
     Schedule mySchedule;
 
 public:
-    Patient(const std::string &username, const std::string &password, const std::string &name, const int &age, const int &weight, const std::string &bloodGroup);
+    Patient(const std::string &patientId,const std::string &username, const std::string &password, const std::string &name, const int &age, const int &weight, const std::string &bloodGroup,std::string &usedID);
 
-    void ViewDoctorList(const std::string &departmentName);
+    // void ViewDoctorList(const std::string &departmentName);
     Schedule ViewMySchedule();
     void ViewMedicalRecords();
-    bool BookAppointment(Slot &slot);
+    bool BookAppointment(std::string slot,std::string doctorId);
 
-    ~Patient();
+    // ~Patient();
 };

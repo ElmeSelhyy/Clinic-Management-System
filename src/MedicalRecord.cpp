@@ -31,3 +31,5 @@ std::string MedicalRecord::getMedicalRecord()
 {
     return "Record ID: " + std::to_string(recordId) + "\nPatient ID: " + std::to_string(patientId) + "\nDoctor ID: " + std::to_string(doctorId) + "\nDiagnosis: " + diagnosisResult + "\nMedical Needed: " + medicalNeeded;
 }
+
+int  MedicalRecord::nextID=0;
