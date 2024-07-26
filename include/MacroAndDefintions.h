@@ -8,6 +8,7 @@
 #define MEDICAL_RECORD_FILE "medicalRecord.txt"
 #define SLOT_FILE "slots.txt"
 #define TEMP_FILE "temp.txt"
+#define RECORD_FILE "record.txt"
 
 enum UserType
 {
