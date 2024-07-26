@@ -44,13 +44,11 @@ std::string MedicalRecord::getMedicalRecord()
 }
 void MedicalRecord::addRecord()
 {
-    std::string report = std::to_string(recordId) + " @" + std::to_string(patientId) + " #" + std::to_string(doctorId) + " '" + diagnosisResult + "' '" + medicalNeeded+"' \n";
+    std::string report = std::to_string(recordId) + " @" + std::to_string(patientId) + " #" + std::to_string(doctorId) + " '" + diagnosisResult + "' '" + medicalNeeded+"' ";
 
     FileHandler fileHandler = FileHandler(RECORD_FILE);
     fileHandler.writeFile(report);
 }
-
-int  MedicalRecord::nextID=0;
 
 
 int  MedicalRecord::nextID=0;

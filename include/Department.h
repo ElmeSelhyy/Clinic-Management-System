@@ -16,4 +16,5 @@ public:
     void removeDoctor(Doctor &doctor);
     void getDoctorList(std::string departmentname);
     void getDepartmentList();
+    void viewDoctorSlots(std::string doctorId);
 };

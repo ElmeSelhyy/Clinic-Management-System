@@ -16,11 +16,12 @@ void patientScreen(std::string patientId)
     std::cout << "Welcome Patient " << name << std::endl;
 
     int option;
-    std::cout << "Choose an option: \n1. search for appointment \n2. View Schedule\n3. Book appointment\n4. View Medical Records \n5. Log out\n";
-    std::cin >> option;
+    
     while (1)
     {
-        while (option != 1 && option != 2 && option != 3)
+        std::cout << "Choose an option: \n1. search for appointment \n2. View Schedule\n3. Book appointment\n4. View Medical Records \n5. Log out\n";
+        std::cin >> option;
+        while (option != 1 && option != 2 && option != 3 && option != 4 && option != 5)
         {
             std::cout << "Invalid option. Please choose again.\n";
             std::cin >> option;
@@ -36,6 +37,11 @@ void patientScreen(std::string patientId)
             std::cout << "Enter the department name.\n";
             std::cin >> departmentName;
             department.getDoctorList(departmentName);
+            std::string doc_id;
+            std::cout << "Please choose doctor id.\n";
+            std::cin >> doc_id;
+            department.viewDoctorSlots(doc_id);
+        
             // patient.ViewDoctorList(departmentName);
             break;
         }
@@ -69,8 +75,7 @@ void patientScreen(std::string patientId)
         }
         case 4:
         {
-            //  Patient patient = Patient(patientId,userName,password,name,stoi(age),weight,bloodGroup,userId);
-            //  patient.ViewMedicalRecords();
+            patient.ViewMedicalRecords();
             break;
         }
         case 5:

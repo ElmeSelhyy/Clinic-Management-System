@@ -3,6 +3,10 @@
 #include <iostream>
 #include <sstream>
 #include "../include/FileHandler.h"
+#include "../include/MacroAndDefintions.h"
+#include <fstream>
+#include <string>
+#include <vector>
 
 Patient::Patient(const std::string &patientId, const std::string &username, const std::string &password, const std::string &name, const int &age, const int &weight, const std::string &bloodGroup, std::string &usedID) : User(username, password, name, age, PATIENT, usedID)
 {
@@ -25,10 +29,13 @@ void Patient::ViewMySchedule()
 
 void Patient::ViewMedicalRecords()
 {
-    for (auto record : medicalRecords)
+    FileHandler fileHandler = FileHandler(RECORD_FILE);
+    std::vector<std::string> medicalRecords = fileHandler.getAllDataWithID("@"+this->getMyId());
+    for (auto it : medicalRecords)
     {
-        std::cout << record.getMedicalRecord() << std::endl;
+        std::cout << it << std::endl;
     }
+    
 }
 
 bool Patient::BookAppointment(std::string slot, std::string doctorId)

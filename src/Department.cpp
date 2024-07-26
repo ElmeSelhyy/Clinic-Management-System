@@ -25,26 +25,55 @@ Department::Department()
 
 void Department::addDoctor(Doctor &doctor)
 {
-    this->departments[doctor.getDepartmentName()].push_back(doctor.getDoctorName() + " id: " + doctor.getMyId());
+    this->departments[doctor.getDepartmentName()].push_back(doctor.getName() + " id: " + doctor.getMyId());
 }
 
 void Department::removeDoctor(Doctor &doctor)
 {
     auto &doctors = departments[doctor.getDepartmentName()];
-    auto it = std::remove(doctors.begin(), doctors.end(), doctor);
-    doctors.erase(it, doctors.end());
+    std::string doctorStr = doctor.getName() + " id: " + doctor.getMyId();
+    // auto it = std::remove(doctors.begin(), doctors.end(), doctorStr);
+    for(auto it = doctors.begin(); it != doctors.end(); it++)
+    {
+        if(*it == doctorStr)
+        {
+            doctors.erase(it);
+            break;
+        }
+    }
+    
 }
 
 void Department::getDoctorList(std::string departmentname)
 {
     for (auto &doctor : departments[departmentname])
     {
-        std::cout << doctor.getDoctorName() << std::endl;
+        std::cout << doctor << std::endl;
     }
+}
+void Department::viewDoctorSlots(std:: string doctorId){
+    
+    FileHandler fileHandler = FileHandler(SLOT_FILE);
+   
+
+    std::vector<std::string> slots=fileHandler.getAllDataWithID("#"+doctorId);
+
+    for (int i = 0; i < slots.size(); i++)
+    {
+        std::istringstream iss(slots[i]);
+        std::string patientName;
+        iss >> patientName >> patientName;
+        if (patientName == "NULL")
+        {
+            std::cout << "*"+slots[i].substr(7) << std::endl;
+        }
+    }
+
 }
 
 void Department::getDepartmentList()
 {
+    std::cout << "Departments: " << std::endl;
     for (auto &department : departmentList)
     {
         std::cout << department << std::endl;
