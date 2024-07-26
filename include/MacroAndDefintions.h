@@ -6,6 +6,7 @@
 #define DOCTOR_REQUEST_FILE "doctorRequest.txt"
 #define MEDICAL_RECORD_FILE "medicalRecord.txt"
 #define SLOT_FILE "slots.txt"
+#define TEMP_FILE "temp.txt"
 
 enum UserType
 {

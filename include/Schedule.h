@@ -13,6 +13,6 @@ public:
     Schedule();
     std::vector<std::string> getavailableSlots();
     void addSlot(std::string &slot);
-    void removeSlot(std::string &slot);
+    bool removeSlot(std::string &slot);
     std::vector<std::string> getSlots();
 };

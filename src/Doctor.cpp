@@ -16,17 +16,12 @@ void Doctor::SetSchedule(std::string &timeslot)
     doctorschedule.addSlot(slot);
 }
 
-bool Doctor::RemoveSchedule(Slot &slot)
+bool Doctor::RemoveSchedule(std::string &slot)
 {
-    // for (auto it = doctorschedule.getSlots().begin(); it != doctorschedule.getSlots().end(); it++)
-    // {
-    //     if (it->gettimeSlot() == slot.gettimeSlot())
-    //     {
-    //         doctorschedule.removeSlot(*it);
-    //         return true;
-    //     }
-    // }
-    return false;
+    //TODO: Implement this function to remove a slot from the doctor's schedule
+    slot= "\n#"+ this->getMyId() +" NULL " + slot;
+   
+    return  doctorschedule.removeSlot(slot);;
 }
 
 std::string Doctor::getDepartmentName()
