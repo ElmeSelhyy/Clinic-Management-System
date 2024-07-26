@@ -41,9 +41,6 @@ std::string MedicalRecord::viewMedicalNeeded()
 std::string MedicalRecord::getMedicalRecord()
 {
     return "Record ID: " + std::to_string(recordId) + "\nPatient ID: " + std::to_string(patientId) + "\nDoctor ID: " + std::to_string(doctorId) + "\nDiagnosis: " + diagnosisResult + "\nMedical Needed: " + medicalNeeded;
-<<<<<<< Updated upstream
-}
-=======
 }
 void MedicalRecord::addRecord()
 {
@@ -54,7 +51,6 @@ void MedicalRecord::addRecord()
 }
 
 int  MedicalRecord::nextID=0;
->>>>>>> Stashed changes
 
 
 int  MedicalRecord::nextID=0;
