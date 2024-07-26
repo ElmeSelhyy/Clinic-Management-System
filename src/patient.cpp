@@ -27,9 +27,9 @@ void Patient::ViewMedicalRecords()
 bool Patient::BookAppointment(std::string slot,std::string doctorId)
 {
     Schedule doctorSchedule= Schedule(doctorId,DOCTOR);
-    std::vector<std::string> availableSlots = doctorSchedule.getavailableSlots();
+    std::vector<std::string> availableSlots = doctorSchedule.getSlots();
 
-    for (const std::string& availableSlot : availableSlots) {
+    for ( std::string& availableSlot : availableSlots) {
         std::istringstream iss(availableSlot);
         std::string segment;
         std::vector<std::string> tokens;
@@ -39,12 +39,13 @@ bool Patient::BookAppointment(std::string slot,std::string doctorId)
         }
         
         if (tokens.size() > 3 && tokens[3] == slot) {
-            doctorSchedule.removeSlot(slot);
+
+            doctorSchedule.removeSlot(availableSlot);
             std::string TimeSlot;
             std::string timeslot_date=tokens[2];
             std::string timeslot_end_hour=tokens[4];
 
-            TimeSlot = timeslot_date + " " + slot + " " + timeslot_end_hour;
+            TimeSlot = "#"+doctorId + " "+getName()+" "+timeslot_date + " " + slot + " " + timeslot_end_hour+"\n";
             doctorSchedule.addSlot(TimeSlot);
             return true; 
         }
