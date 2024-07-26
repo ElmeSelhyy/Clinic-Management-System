@@ -57,7 +57,7 @@ void patientScreen(std::string patientId)
     {
         //  Patient patient = Patient(patientId,userName,password,name,stoi(age),weight,bloodGroup,userId);
         //  patient.ViewMedicalRecords();
-         break;
+        break;
     }
     }
 }
